@@ -1,1 +1,1 @@
-web: gunicorn CloudGroup.wsgi --log-file-
+web: gunicorn CloudGroup.wsgi --log-file -
