@@ -1,0 +1,29 @@
+from django import forms
+
+from blog.models import Boat
+
+
+class BoatForm(forms.ModelForm):
+    class Meta:
+        model = Boat
+        fields = ('name', 'owner', 'description', 'built', 'length', 'price', 'boat_image')
+        widgets = {
+            'name': forms.TextInput(attrs={'class':'form-control'}),
+            'owner': forms.Select(attrs={'class':'form-control', 'value':'', 'id':'input', 'type':'hidden'}),
+            'description': forms.Textarea(attrs={'class':'form-control'}),
+            'built': forms.NumberInput(attrs={'class':'form-control'}),
+            'length': forms.NumberInput(attrs={'class':'form-control'}),
+            'price': forms.NumberInput(attrs={'class':'form-control'}),
+            'boat_image': forms.ClearableFileInput(attrs={'class':'form-control'}),
+        }
+class UpdateBoatForm(forms.ModelForm):
+    class Meta:
+        model = Boat
+        fields = ('description', 'built', 'length', 'price', 'boat_image')
+        widgets = {
+            'description': forms.Textarea(attrs={'class':'form-control'}),
+            'built': forms.NumberInput(attrs={'class':'form-control'}),
+            'length': forms.NumberInput(attrs={'class':'form-control'}),
+            'price': forms.NumberInput(attrs={'class':'form-control'}),
+            'boat_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }
