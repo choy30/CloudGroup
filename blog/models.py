@@ -10,3 +10,4 @@ class Boat(models.Model):
     built = models.IntegerField()
     length = models.DecimalField(max_digits=5, decimal_places=2)
     price = models.DecimalField(max_digits=7, decimal_places=2)
+    address = models.CharField(max_length=250)
