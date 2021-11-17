@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+EASY_MAPS_GOOGLE_KEY = 'AIzaSyBAcEF0YlXFjkkNoCmX-JjZ5N3Wf0RkX-Q'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
