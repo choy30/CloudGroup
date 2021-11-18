@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'easy_map',
     'members',
     'corsheaders',
+    'weather',
 ]
 
 MIDDLEWARE = [
