@@ -13,6 +13,9 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import django_heroku
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -23,12 +26,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-@9#*8!-jc%(gv$!$aj09tk8*0j137y=_3%w33fs_swl-edx&a@')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', False))
 
 ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+EASY_MAPS_GOOGLE_KEY = 'AIzaSyBAcEF0YlXFjkkNoCmX-JjZ5N3Wf0RkX-Q'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'easy_map',
+    'members',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -77,11 +84,19 @@ WSGI_APPLICATION = 'CloudGroup.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd203bhu9t2om3d',
+        'USER': 'dojtptewyeqwhn',
+        'PASSWORD': 'a115c265f49d6aeaa172548bf3beba19114e14ea74d79aa9cc624b0a3c958a3f',
+        'HOST': 'ec2-107-20-127-127.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
-
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -115,19 +130,24 @@ USE_L10N = True
 
 USE_TZ = True
 
+CORS_ORIGIN_ALLOW_ALL=True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'login'
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+django_heroku.settings(locals())
