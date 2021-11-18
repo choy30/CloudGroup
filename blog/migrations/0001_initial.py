@@ -27,41 +27,4 @@ class Migration(migrations.Migration):
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
-
-        migrations.AddField(
-            model_name='boat',
-            name='price',
-            field=models.DecimalField(decimal_places=2, default=265.0, max_digits=7),
-            preserve_default=False,
-        ),
-        migrations.AlterField(
-            model_name='boat',
-            name='built',
-            field=models.IntegerField(),
-        ),
-        migrations.CreateModel(
-            name='Rent',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('start_date', models.DateField()),
-                ('end_date', models.DateField()),
-                ('boat', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.boat')),
-                ('renter', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
-        migrations.AlterField(
-            model_name='rent',
-            name='renter',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AlterField(
-            model_name='rent',
-            name='end_date',
-            field=models.DateField(default=datetime.date(2021, 11, 18)),
-        ),
-        migrations.AlterField(
-            model_name='rent',
-            name='start_date',
-            field=models.DateField(default=datetime.date(2021, 11, 18)),
-        ),
     ]
