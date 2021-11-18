@@ -3,7 +3,8 @@ from django.forms import DateInput
 
 from blog.models import Boat, Rent
 
-
+class DateInput(forms.DateInput):
+    input_type = 'date'
 class BoatForm(forms.ModelForm):
     class Meta:
         model = Boat
