@@ -13,6 +13,9 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import django_heroku
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -40,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'easy_map',
+    'members',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +84,14 @@ WSGI_APPLICATION = 'CloudGroup.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd203bhu9t2om3d',
+        'USER': 'dojtptewyeqwhn',
+        'PASSWORD': 'a115c265f49d6aeaa172548bf3beba19114e14ea74d79aa9cc624b0a3c958a3f',
+        'HOST': 'ec2-107-20-127-127.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 import dj_database_url
