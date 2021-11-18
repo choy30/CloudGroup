@@ -1,8 +1,7 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from .views import HomeView, AddBoatView, MyBoat, BoatDetail, UpdateBoatView, DeleteBoatView, RentBoatView, \
-    RentListView, rent_success, DeleteRentView
+from .views import HomeView, AddBoatView, MyBoat, BoatDetail, UpdateBoatView, DeleteBoatView, RentBoatView, RentListView, rent_success, DeleteRentView
 from blog import views
 
 urlpatterns = [

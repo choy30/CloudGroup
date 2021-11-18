@@ -12,12 +12,8 @@
         Length: {{ boat.length }}<br>
         Price: ${{ boat.price }} per day
     </p>
-    {% if user.is_authenticated %}
-        {% if user.id == boat.owner.id %}
-            <a href="{% url 'update-boat' boat.pk %}" class="btn btn-secondary">Update</a>
-            <a href="{% url 'delete-boat' boat.pk %}" class="btn btn-danger">Delete</a>
-        {% else %}
-            <a href="{% url 'rent-boat' boat.pk %}" class="btn btn-primary">Rent boat</a>
-        {% endif %}
-    {% endif %}
+    {% load easy_maps_tags %}
+    {% easy_map boat.address 300 400 using "map.html" %}
+    <a href="{% url 'update-boat' boat.pk %}" class="btn btn-secondary">Update</a>
+    <a href="{% url 'delete-boat' boat.pk %}" class="btn btn-danger">Delete</a>
 {% endblock %}

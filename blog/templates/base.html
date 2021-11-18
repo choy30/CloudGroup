@@ -12,7 +12,6 @@
         {% block title %}
         {% endblock %}
     </title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -27,31 +26,24 @@
           <a class="nav-link" href="{% url 'my-boat' %}">My Boat</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'rent-list' %}">Rent</a>
+          <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {% if user.is_authenticated %}
-                {{ user.username }}
-            {% else %}
-                Login/Register
-            {% endif %}
+            Dropdown
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              {% if user.is_authenticated %}
-                  <li><a class="dropdown-item" href="{% url 'edit-profile' %}">Profile</a></li>
-                  <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-              {% else %}
             <li><a class="dropdown-item" href="{% url 'login' %}">Login</a></li>
-            <li><a class="dropdown-item" href="{% url 'register' %}">Register</a></li>
-              {% endif %}
+            <li><a class="dropdown-item" href="{% url 'register' %}">Regist</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'edit-profile' %}">edit profile</a></li>
           </ul>
         </li>
       </ul>
         </div>
     </div>
     </nav>
-    <div class="container" style="margin-bottom: 4rem"><br>
+    <div class="container"><br>
         {% block content %}
         {% endblock %}
     </div>
