@@ -6,6 +6,7 @@
     <h1>Rent My Boat</h1>
     {% for boat in object_list %}
         <div class="card">
+            <img src="{{ boat.boat_image.url }}" style="width: 25rem; height: 25rem;">
             <div class="card-body">
                 <h4><a href="{% url 'boat-detail' boat.pk %}">{{ boat.name }}</a> </h4>
                 <p>
